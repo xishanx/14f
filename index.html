@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Forever Love 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:black;
+    color:white;
+    overflow:hidden;
+}
+
+/* 🌌 Stars Background */
+.stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url('https://www.transparenttextures.com/patterns/stardust.png');
+    animation:moveStars 120s linear infinite;
+    z-index:-1;
+}
+@keyframes moveStars{
+    from{background-position:0 0;}
+    to{background-position:10000px 5000px;}
+}
+
+/* Main Card */
+.container{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    background:rgba(0,0,0,0.6);
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 0 40px pink;
+    backdrop-filter:blur(10px);
+}
+
+h1{
+    font-family:'Great Vibes',cursive;
+    font-size:55px;
+}
+
+.slideshow{
+    margin:20px auto;
+    width:250px;
+    height:250px;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 0 20px white;
+}
+.slideshow img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+#timer{
+    margin-top:10px;
+    font-size:18px;
+    color:#ff9ecf;
+}
+
+/* Buttons */
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    font-size:16px;
+    cursor:pointer;
+    background:pink;
+    color:black;
+    margin:8px;
+    transition:0.3s;
+}
+button:hover{
+    background:white;
+    transform:scale(1.1);
+}
+
+/* Popup */
+.popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.92);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.popup-content{
+    width:90%;
+    max-width:650px;
+    max-height:80vh;
+    overflow-y:auto;
+    padding:30px;
+    background:rgba(0,0,0,0.85);
+    border-radius:20px;
+    box-shadow:0 0 25px pink;
+    text-align:center;
+}
+
+.popup-content h2{
+    font-family:'Great Vibes',cursive;
+    font-size:32px;
+    white-space:pre-line;
+    line-height:1.6;
+}
+
+video{
+    width:300px;
+    border-radius:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<audio id="bgMusic" autoplay loop>
+<source src="channa.mp3" type="audio/mp3">
+</audio>
+
+
+<div class="container">
+<h1>Happy Valentine's Day ❤️</h1>
+
+<div class="slideshow">
+<img id="slide" src="photo1.jpg">
+</div>
+
+<div id="timer"></div>
+
+<button onclick="openProposal()">Click for Surprise 💍</button>
+</div>
+
+<!-- 💍 Proposal Popup -->
+<div class="popup" id="proposal">
+<div class="popup-content">
+<h2 id="shayariText"></h2>
+<br>
+<button onclick="closeProposal()">Forever Yes ❤️</button>
+<button onclick="noClicked()">No 😏</button>
+</div>
+</div>
+
+<!-- 😏 Special Screen -->
+<div class="popup" id="specialScreen">
+<div class="popup-content">
+<img src="special.jpg" width="250" style="border-radius:20px;"><br><br>
+<video id="specialVideo" autoplay>
+<source src="video.mp4" type="video/mp4">
+</video>
+</div>
+</div>
+
+<script>
+
+/* Slideshow */
+let images=["photo1.jpg","photo2.jpg","photo3.jpg"];
+let index=0;
+setInterval(()=>{
+index=(index+1)%images.length;
+document.getElementById("slide").src=images[index];
+},3000);
+
+/* Timer */
+let startDate=new Date("2025-02-14T00:00:00");
+setInterval(()=>{
+let now=new Date();
+let diff=now-startDate;
+let days=Math.floor(diff/(1000*60*60*24));
+let hours=Math.floor((diff/(1000*60*60))%24);
+let minutes=Math.floor((diff/(1000*60))%60);
+document.getElementById("timer").innerHTML=
+"Together for "+days+" days "+hours+" hrs "+minutes+" min 💕";
+},1000);
+
+/* Shayari Popup */
+function openProposal(){
+let shayari=`Tum meri zindagi ka sabse khoobsurat ehsaas ho...
+jab tum haste ho to meri duniya roshan ho jaati hai.
+Tumhari aankhon ki chamak meri taqat hai,
+tumhari awaaz mera sukoon hai,
+tumhara saath meri duniya hai.
+
+Jab se tum meri life me aayi ho,
+har din special ho gaya hai,
+har raat khoobsurat ho gayi hai.
+Tum sirf meri mohabbat nahi,
+meri aadat ho,
+meri zarurat ho,
+mera future ho.
+
+Main wada karta hoon,
+chahe waqt badle,
+chahe haalaat badle,
+mera pyaar kabhi nahi badlega.
+Mera dil sirf tumhara tha,
+hai,
+aur hamesha rahega.
+
+Aaj iss khaas din par
+sirf itna poochna chahta hoon...
+
+Will You Be My Valentine? 💖`;
+
+document.getElementById("shayariText").innerText=shayari;
+document.getElementById("proposal").style.display="flex";
+}
+
+function closeProposal(){
+document.getElementById("proposal").style.display="none";
+}
+
+function noClicked(){
+
+// Proposal close
+document.getElementById("proposal").style.display="none";
+
+// Stop background music
+let bgMusic = document.getElementById("bgMusic");
+bgMusic.pause();
+bgMusic.currentTime = 0;
+
+// Show special screen
+document.getElementById("specialScreen").style.display="flex";
+
+let video = document.getElementById("specialVideo");
+
+// Ensure video plays
+video.play();
+
+// When video ends
+video.onended = function(){
+    document.getElementById("specialScreen").style.display="none";
+
+    // Optional: background music resume
+    bgMusic.play();
+};
+}
+
+
+</script>
+
+</body>
+</html>
